@@ -1,12 +1,12 @@
 type: choice
 is_multiple_choice: true
 options:
-- text: To create a file
-- text: To overwrite an existing file
-- text: To delete a file
 - text: To add text to already existing file content
-- text: To write text to a file
+- text: To delete a file
 - text: To output text to the console
+- text: To create a file
+- text: To write text to a file
+- text: To overwrite an existing file
 files:
 - name: src/Main.kt
   visible: true

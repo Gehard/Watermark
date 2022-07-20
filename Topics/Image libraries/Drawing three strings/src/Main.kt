@@ -1,18 +1,20 @@
 import java.awt.Color
 import java.awt.image.BufferedImage
 
+const val H2 = 200
+const val F0 = 50
+const val F1 = 51
+const val F2 = 52
+
 fun drawStrings(): BufferedImage {
-    val image = BufferedImage(200,200, BufferedImage.TYPE_INT_RGB)
-    val graphics = image.createGraphics()
-
-    graphics.color = Color.RED
-    graphics.drawString("Hello, images!", 50, 50)
-
-    graphics.color = Color.GREEN
-    graphics.drawString("Hello, images!", 51, 51)
-
-    graphics.color = Color.blue
-    graphics.drawString("Hello, images!", 52, 52)
-
+    val image = BufferedImage(H2, H2, BufferedImage.TYPE_INT_RGB)
+    val str = "Hello, images!"
+    val gr = image.createGraphics()
+    gr.color = Color.RED
+    gr.drawString(str, F0, F0)
+    gr.color = Color.GREEN
+    gr.drawString(str, F1, F1)
+    gr.color = Color.BLUE
+    gr.drawString(str, F2, F2)
     return image
 }

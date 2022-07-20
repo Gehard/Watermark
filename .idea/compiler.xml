@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="17">
+      <module name="Watermark.Topics-Image_libraries-Color_encoding.main" target="11" />
+      <module name="Watermark.Topics-Image_libraries-Drawing_a_red_square.main" target="11" />
+      <module name="Watermark.Topics-Image_libraries-Drawing_four_circles.main" target="11" />
+      <module name="Watermark.Topics-Image_libraries-Drawing_three_strings.main" target="11" />
+      <module name="Watermark.Topics-Image_libraries-Drawing_two_lines.main" target="11" />
+      <module name="Watermark.Topics-Image_libraries-Raster_Images.main" target="11" />
+      <module name="Watermark.Topics-Image_libraries-Representing_images_in_Kotlin.main" target="11" />
+      <module name="Watermark.Topics-Image_libraries-Theory.main" target="11" />
+      <module name="Watermark.Topics-String_templates-Arithmetic_expression.main" target="11" />
+      <module name="Watermark.Topics-String_templates-Date_and_time_formatting.main" target="11" />
+      <module name="Watermark.Topics-String_templates-How_to_write_string_templates.main" target="11" />
+      <module name="Watermark.Topics-String_templates-Print_two_numbers_on_the_same_line.main" target="11" />
+      <module name="Watermark.Topics-String_templates-Repetitions_and_templates.main" target="11" />
+      <module name="Watermark.Topics-String_templates-String_and_its_Int.main" target="11" />
+      <module name="Watermark.Topics-String_templates-Templates_for_expressions.main" target="11" />
+      <module name="Watermark.Topics-String_templates-Theory.main" target="11" />
+      <module name="Watermark.Topics-String_templates-What_are_string_templates.main" target="11" />
+      <module name="Watermark.Topics-Writing_files-Closed_case.main" target="11" />
+      <module name="Watermark.Topics-Writing_files-Theory.main" target="11" />
+      <module name="Watermark.Topics-Writing_files-writeText__.main" target="11" />
+      <module name="Watermark.util.main" target="11" />
+      <module name="Watermark.Watermark-task-build-classes-kotlin.main" target="11" />
+      <module name="Watermark.Watermark-task-build-reports-tests.main" target="11" />
+      <module name="Watermark.Watermark-task-build-test-results.main" target="11" />
+      <module name="Watermark.Watermark-task-build-tmp.main" target="11" />
+      <module name="Watermark.Watermark-task.main" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
