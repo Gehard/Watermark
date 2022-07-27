@@ -16,19 +16,48 @@ fun main() {
 
         ensureSameDimensions(inputBufferedImage, watermarkBufferedImage)
 
+        val transparencyColor = getTransparencyColor(watermarkBufferedImage)
+
         val useWatermarkTransparency = getValidWatermarkTransparency(watermarkBufferedImage)
 
         val weight = getValidWatermarkWeight()
 
         val outputFilename = getValidOutputFilename()
 
-        val resultImage = blendImages(inputBufferedImage, watermarkBufferedImage, weight, useWatermarkTransparency)
+        val resultImage =
+            blendImages(inputBufferedImage, watermarkBufferedImage, weight, useWatermarkTransparency, transparencyColor)
 
         ImageIO.write(resultImage, outputFilename.split(".").last(), File(outputFilename))
 
         println("The watermarked image $outputFilename has been created.")
     } catch (ex: RuntimeException) {
         println(ex.message)
+    }
+}
+
+fun getTransparencyColor(watermark: BufferedImage): Color? {
+    // Watermark uses alpha channel -> do nothing
+    if (watermark.colorModel.pixelSize == 32) {
+        return null
+    }
+
+    println("Do you want to set a transparency color?")
+    val input = readLine()!!
+    if (input != "yes") {
+        return null
+    }
+
+    println("Input a transparency color ([Red] [Green] [Blue]):")
+    val colorInput = readLine()!!
+    if ("(\\d+) (\\d+) (\\d+)".toRegex().matches(colorInput)) {
+        val (r, g, b) = "(\\d+) (\\d+) (\\d+)".toRegex().matchEntire(colorInput)!!.destructured
+        try {
+            return Color(r.toInt(), g.toInt(), b.toInt())
+        } catch (ex: IllegalArgumentException) { // color value not in 0..255
+            throw IllegalArgumentException("The transparency color input is invalid.")
+        }
+    } else {
+        throw IllegalArgumentException("The transparency color input is invalid.")
     }
 }
 
@@ -65,6 +94,8 @@ fun getValidWatermarkImage(): BufferedImage {
     } else if (bufferedImage.colorModel.pixelSize !in VALID_BIT_VALUES) {
         throw RuntimeException("The watermark isn't 24 or 32-bit.")
     }
+
+
     return bufferedImage
 }
 
@@ -104,7 +135,11 @@ fun getValidOutputFilename(): String {
     return input
 }
 
-fun blendImages(image: BufferedImage, watermark: BufferedImage, weight: Int, useWatermarkTransparency: Boolean): BufferedImage {
+fun blendImages(
+    image: BufferedImage, watermark: BufferedImage, weight: Int,
+    useWatermarkTransparency: Boolean,
+    transparencyColor: Color?
+): BufferedImage {
     val resultImage = BufferedImage(image.width, image.height, BufferedImage.TYPE_INT_RGB)
 
     for (x in 0 until image.width) {
@@ -112,12 +147,17 @@ fun blendImages(image: BufferedImage, watermark: BufferedImage, weight: Int, use
             val i = Color(image.getRGB(x, y))
             val w = Color(watermark.getRGB(x, y), useWatermarkTransparency)
 
-            val color = if (w.alpha == 0) {
+            val watermarkColorIsTransparencyColor =
+                w.red   == transparencyColor?.red &&
+                        w.green == transparencyColor.green &&
+                        w.blue  == transparencyColor.blue
+
+            val color = if (w.alpha == 0 || watermarkColorIsTransparencyColor) {
                 Color(i.red, i.green, i.blue)
             } else {
                 Color(mixColors(w.red,   i.red,   weight),
                     mixColors(w.green, i.green, weight),
-                    mixColors(w.blue,  i.blue,  weight))
+                    mixColors(w.blue,   i.blue, weight))
             }
 
             resultImage.setRGB(x, y, color.rgb)
@@ -133,7 +173,8 @@ fun mixColors(watermarkColor: Int, imageColor: Int, weight: Int): Int {
 
 fun ensureSameDimensions(image: BufferedImage, watermark: BufferedImage) {
     if (image.width != watermark.width ||
-        image.height != watermark.height) {
+        image.height != watermark.height
+    ) {
         throw RuntimeException("The image and watermark dimensions are different.")
     }
 }
