@@ -8,55 +8,98 @@ import javax.imageio.ImageIO
 
 val VALID_BIT_VALUES = arrayOf(24, 32)
 
+enum class PositionType {
+    SINGLE, GRID
+}
+
+class Position(val type: PositionType, val pair: Pair<Int, Int>? = null)
+
+class TransparencyColor(val use: Boolean, val color: Color? = null)
+
 fun main() {
     try {
         val inputBufferedImage = getValidInputImage()
 
         val watermarkBufferedImage = getValidWatermarkImage()
 
-        ensureSameDimensions(inputBufferedImage, watermarkBufferedImage)
-
-        val transparencyColor = getTransparencyColor(watermarkBufferedImage)
+        validateDimensions(inputBufferedImage, watermarkBufferedImage)
 
         val useWatermarkTransparency = getValidWatermarkTransparency(watermarkBufferedImage)
 
+        val transparencyColor = getTransparencyColor(watermarkBufferedImage, useWatermarkTransparency)
+
         val weight = getValidWatermarkWeight()
+
+        val maxDiffX = inputBufferedImage.width - watermarkBufferedImage.width
+        val maxDiffY = inputBufferedImage.height - watermarkBufferedImage.height
+        val position = getValidPosition(maxDiffX, maxDiffY)
 
         val outputFilename = getValidOutputFilename()
 
         val resultImage =
-            blendImages(inputBufferedImage, watermarkBufferedImage, weight, useWatermarkTransparency, transparencyColor)
+            blendImages(inputBufferedImage, watermarkBufferedImage, weight, position, transparencyColor)
 
         ImageIO.write(resultImage, outputFilename.split(".").last(), File(outputFilename))
 
         println("The watermarked image $outputFilename has been created.")
     } catch (ex: RuntimeException) {
+        ex.printStackTrace()
         println(ex.message)
     }
 }
 
-fun getTransparencyColor(watermark: BufferedImage): Color? {
+fun getValidPosition(maxDiffX: Int, maxDiffY: Int): Position {
+    println("Choose the position method (single, grid):")
+    return when (readLine()!!.lowercase()) {
+        "single" -> Position(PositionType.SINGLE, getValidSinglePosition(maxDiffX, maxDiffY))
+        "grid" -> Position(PositionType.GRID)
+        else -> throw IllegalArgumentException("The position method input is invalid.")
+    }
+}
+
+fun getValidSinglePosition(maxDiffX: Int, maxDiffY: Int): Pair<Int, Int> {
+    println("Input the watermark position ([x 0-$maxDiffX] [y 0-$maxDiffY]):")
+    val input = readLine()!!
+
+    val twoIntegers = "(-?\\d+) (-?\\d+)".toRegex()
+    if (!input.matches(twoIntegers)) {
+        throw IllegalArgumentException("The position input is invalid.")
+    }
+
+    val (x, y) = twoIntegers.matchEntire(input)!!.destructured
+
+    if (x.toInt() !in 0..maxDiffX ||
+        y.toInt() !in 0..maxDiffY) {
+        throw IllegalArgumentException("The position input is out of range.")
+    }
+
+    return Pair(x.toInt(), y.toInt())
+}
+
+fun getTransparencyColor(watermark: BufferedImage, useWatermarkTransparency: Boolean): TransparencyColor {
     // Watermark uses alpha channel -> do nothing
-    if (watermark.colorModel.pixelSize == 32) {
-        return null
+    if (watermark.colorModel.hasAlpha()) {
+        return TransparencyColor(useWatermarkTransparency)
     }
 
     println("Do you want to set a transparency color?")
     val input = readLine()!!
     if (input != "yes") {
-        return null
+        return TransparencyColor(false)
     }
 
     println("Input a transparency color ([Red] [Green] [Blue]):")
     val colorInput = readLine()!!
-    if ("(\\d+) (\\d+) (\\d+)".toRegex().matches(colorInput)) {
-        val (r, g, b) = "(\\d+) (\\d+) (\\d+)".toRegex().matchEntire(colorInput)!!.destructured
-        try {
-            return Color(r.toInt(), g.toInt(), b.toInt())
-        } catch (ex: IllegalArgumentException) { // color value not in 0..255
-            throw IllegalArgumentException("The transparency color input is invalid.")
-        }
-    } else {
+
+    val threeIntegers = "(\\d+) (\\d+) (\\d+)".toRegex()
+    if (!threeIntegers.matches(colorInput)) {
+        throw IllegalArgumentException("The transparency color input is invalid.")
+    }
+
+    val (r, g, b) = threeIntegers.matchEntire(colorInput)!!.destructured
+    try {
+        return TransparencyColor(useWatermarkTransparency, Color(r.toInt(), g.toInt(), b.toInt()))
+    } catch (ex: IllegalArgumentException) { // color value not in 0..255
         throw IllegalArgumentException("The transparency color input is invalid.")
     }
 }
@@ -137,20 +180,29 @@ fun getValidOutputFilename(): String {
 
 fun blendImages(
     image: BufferedImage, watermark: BufferedImage, weight: Int,
-    useWatermarkTransparency: Boolean,
-    transparencyColor: Color?
+    position: Position,
+    transparencyColor: TransparencyColor
 ): BufferedImage {
     val resultImage = BufferedImage(image.width, image.height, BufferedImage.TYPE_INT_RGB)
 
     for (x in 0 until image.width) {
         for (y in 0 until image.height) {
             val i = Color(image.getRGB(x, y))
-            val w = Color(watermark.getRGB(x, y), useWatermarkTransparency)
+
+            val w = if (position.type == PositionType.GRID) {
+                Color(watermark.getRGB(x % watermark.width, y % watermark.height), transparencyColor.use)
+            } else {
+                if (x in position.pair!!.first until(position.pair.first + watermark.width) &&
+                    y in position.pair.second until (position.pair.second + watermark.height)) {
+                    Color(watermark.getRGB(x - position.pair.first, y - position.pair.second), transparencyColor.use)
+                } else
+                    Color(image.getRGB(x, y))
+            }
 
             val watermarkColorIsTransparencyColor =
-                w.red   == transparencyColor?.red &&
-                        w.green == transparencyColor.green &&
-                        w.blue  == transparencyColor.blue
+                w.red   == transparencyColor.color?.red &&
+                        w.green == transparencyColor.color.green &&
+                        w.blue  == transparencyColor.color.blue
 
             val color = if (w.alpha == 0 || watermarkColorIsTransparencyColor) {
                 Color(i.red, i.green, i.blue)
@@ -171,10 +223,10 @@ fun mixColors(watermarkColor: Int, imageColor: Int, weight: Int): Int {
     return (weight * watermarkColor + (100 - weight) * imageColor) / 100
 }
 
-fun ensureSameDimensions(image: BufferedImage, watermark: BufferedImage) {
-    if (image.width != watermark.width ||
-        image.height != watermark.height
+fun validateDimensions(image: BufferedImage, watermark: BufferedImage) {
+    if (watermark.width > image.width||
+        watermark.height > image.height
     ) {
-        throw RuntimeException("The image and watermark dimensions are different.")
+        throw RuntimeException("The watermark's dimensions are larger.")
     }
 }
