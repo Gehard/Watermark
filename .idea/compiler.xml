@@ -2,6 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="17">
+      <module name="Watermark.Topics-Commonly_Used_Regex-Phones_without_9.main" target="11" />
+      <module name="Watermark.Topics-Commonly_Used_Regex-Theory.main" target="11" />
       <module name="Watermark.Topics-Image_libraries-Color_encoding.main" target="11" />
       <module name="Watermark.Topics-Image_libraries-Drawing_a_red_square.main" target="11" />
       <module name="Watermark.Topics-Image_libraries-Drawing_four_circles.main" target="11" />
@@ -10,6 +12,12 @@
       <module name="Watermark.Topics-Image_libraries-Raster_Images.main" target="11" />
       <module name="Watermark.Topics-Image_libraries-Representing_images_in_Kotlin.main" target="11" />
       <module name="Watermark.Topics-Image_libraries-Theory.main" target="11" />
+      <module name="Watermark.Topics-Inheritance-Constructing_a_hierarchy.main" target="11" />
+      <module name="Watermark.Topics-Inheritance-Create_a_child_class.main" target="11" />
+      <module name="Watermark.Topics-Inheritance-Keyword.main" target="11" />
+      <module name="Watermark.Topics-Inheritance-Requirement.main" target="11" />
+      <module name="Watermark.Topics-Inheritance-Statements_about_inheritance.main" target="11" />
+      <module name="Watermark.Topics-Inheritance-Theory.main" target="11" />
       <module name="Watermark.Topics-String_templates-Arithmetic_expression.main" target="11" />
       <module name="Watermark.Topics-String_templates-Date_and_time_formatting.main" target="11" />
       <module name="Watermark.Topics-String_templates-How_to_write_string_templates.main" target="11" />

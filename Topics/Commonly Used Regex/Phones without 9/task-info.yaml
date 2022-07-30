@@ -1,0 +1,31 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    fun main() {
+        // write your code here
+
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20667#comment
+status: Failed
+feedback:
+  message: |
+    Failed test #1 of 3. Wrong answer
+
+    This is a sample test from the problem statement!
+
+    Test input:
+    Phone 1: 123-123-1234. Phone 2: 9991234567. Phone 3: (887)6523456. Phone 4: (988)-745-9821
+    Correct output:
+    123-123-1234
+    (887)6523456
+
+    Your code output:
+    123-123-1234
+    9991234567
+    (887)6523456
+    (988)-745-9821
+  time: Fri, 29 Jul 2022 07:58:16 UTC
+record: -1
