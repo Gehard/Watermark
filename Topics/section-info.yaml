@@ -4,3 +4,6 @@ content:
 - Image libraries
 - Commonly Used Regex
 - Inheritance
+- Processing strings
+- Named arguments
+- Secondary constructor

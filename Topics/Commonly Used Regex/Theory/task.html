@@ -39,7 +39,7 @@ for (date in dates) println(date.value)</code></pre>
   <h5 id="phone-numbers" style="text-align: center;">Phone numbers</h5> 
   <p>In previous topics, we briefly looked at some regular expressions for phone numbers. In the following example, we will compile a slightly different regex. For simplicity, let's assume that phone numbers can be written in one of the following formats: <strong>XXX-XXX-XXXX</strong>, <strong>(XXX)-XXX-XXXX</strong>, <strong>(XXX)XXXXXXX</strong>, and <strong>XXXXXXXXXX</strong>.</p> 
   <p>Look at the following regular expression:</p> 
-  <pre><code class="language-no-highlight">\(?[\d]{3}\)?-[\d]{3}-[\d]{4}</code></pre> 
+  <pre><code class="language-no-highlight">\(?[\d]{3}\)?-?[\d]{3}-?[\d]{4}</code></pre> 
   <p>What's going on here?</p> 
   <ul> 
    <li><strong>Section 1</strong> <code class="language-kotlin">\(?[\d]{3}\)?-?</code> matches the first three digits, possible brackets, and a delimiter.</li> 

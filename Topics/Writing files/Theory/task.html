@@ -16,12 +16,14 @@ myFile.writeText("It is awfully hard work doing nothing!")</code></pre>
   <pre><code class="language-kotlin">val myFile = File("D://Users/myFile.txt")
 myFile.writeText("It is awfully hard work doing nothing!")</code></pre> 
   <p>If you run the code, you can see that our file with the specified text was created on the corresponding disk following this path.</p> 
-  <p></p>
-  <div class="alert alert-primary">
-   If the file has access restrictions or has already been opened in another process, 
-   <code class="language-kotlin">AccessDeniedException</code> is thrown.
-  </div>
-  <p></p> 
+  <p>If the file has access restrictions or has already been opened in another process, <code class="language-kotlin">AccessDeniedException</code> is thrown.<span style="font-size: inherit; font-weight: inherit;">Also, you can determine the current directory with</span><span style="font-size: inherit; font-weight: inherit;"> </span><code class="language-kotlin">System.getProperty ("user.dir")</code><span style="font-size: inherit; font-weight: inherit;">:</span></p> 
+  <pre><code class="language-kotlin">val workingDirectory = System.getProperty ("user.dir").</code></pre> 
+  <p>Note that the path separator depends on the platform. For example, for Windows it is <code class="language-kotlin">'\'</code>, and for UNIX and MAC it is <code class="language-kotlin">'/'</code>. To correctly define the separator, use the <code class="language-kotlin">File.separator</code> in the library <code class="language-kotlin">java.io.File</code>. We declare the variable containing the separator of our OS: </p> 
+  <pre><code class="language-kotlin">// separator
+val separator = File.separator. 
+
+//combine path to string: 
+val absolutePath = "${workingDirectory}${separator}myFile.txt."</code></pre> 
   <p>Last but not least, let’s talk about code style: the file name should be put into a separate string variable. You can also put the text into a variable. Take a look:</p> 
   <pre><code class="language-kotlin">val fileName = "myFile.txt"
 val textToFile = "If we learn to process our code carefully, we’ll grow as programmers."
