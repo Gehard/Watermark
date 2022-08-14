@@ -18,6 +18,12 @@
       <module name="Watermark.Topics-Inheritance-Requirement.main" target="11" />
       <module name="Watermark.Topics-Inheritance-Statements_about_inheritance.main" target="11" />
       <module name="Watermark.Topics-Inheritance-Theory.main" target="11" />
+      <module name="Watermark.Topics-Invoking_functions-Arguments.main" target="11" />
+      <module name="Watermark.Topics-Invoking_functions-How_to_invoke_a_function.main" target="11" />
+      <module name="Watermark.Topics-Invoking_functions-Lembas.main" target="11" />
+      <module name="Watermark.Topics-Invoking_functions-Returning_a_result.main" target="11" />
+      <module name="Watermark.Topics-Invoking_functions-The_magic_of_println.main" target="11" />
+      <module name="Watermark.Topics-Invoking_functions-Theory.main" target="11" />
       <module name="Watermark.Topics-Named_arguments-Car_price.main" target="11" />
       <module name="Watermark.Topics-Named_arguments-Car_speed.main" target="11" />
       <module name="Watermark.Topics-Named_arguments-Correct_invocations.main" target="11" />
@@ -50,6 +56,13 @@
       <module name="Watermark.Topics-Processing_strings-The_lucky_ticket.main" target="11" />
       <module name="Watermark.Topics-Processing_strings-The_percentage_of_G_and_C_characters.main" target="11" />
       <module name="Watermark.Topics-Processing_strings-Theory.main" target="11" />
+      <module name="Watermark.Topics-Secondary_constructor-Barista_problem.main" target="11" />
+      <module name="Watermark.Topics-Secondary_constructor-Cat_House.main" target="11" />
+      <module name="Watermark.Topics-Secondary_constructor-Creating_news.main" target="11" />
+      <module name="Watermark.Topics-Secondary_constructor-Fabric_manufacture.main" target="11" />
+      <module name="Watermark.Topics-Secondary_constructor-Frozen_desserts.main" target="11" />
+      <module name="Watermark.Topics-Secondary_constructor-Spot_the_error.main" target="11" />
+      <module name="Watermark.Topics-Secondary_constructor-Theory.main" target="11" />
       <module name="Watermark.Topics-String_templates-Arithmetic_expression.main" target="11" />
       <module name="Watermark.Topics-String_templates-Date_and_time_formatting.main" target="11" />
       <module name="Watermark.Topics-String_templates-How_to_write_string_templates.main" target="11" />
