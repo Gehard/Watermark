@@ -1,0 +1,21 @@
+type: code
+files:
+- name: src/Main.kt
+  visible: true
+  text: |-
+    class Container<T>(t: T) {
+        var value = t
+    }
+
+    fun main() {
+        val container = Container<>()
+        println(container.value)
+
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/14704#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 15 Aug 2022 11:27:48 UTC
+record: -1

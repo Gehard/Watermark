@@ -18,8 +18,13 @@
       <module name="Watermark.Topics-Inheritance-Requirement.main" target="11" />
       <module name="Watermark.Topics-Inheritance-Statements_about_inheritance.main" target="11" />
       <module name="Watermark.Topics-Inheritance-Theory.main" target="11" />
+      <module name="Watermark.Topics-Introduction_to_generic_programming-Code_to_move.main" target="11" />
+      <module name="Watermark.Topics-Introduction_to_generic_programming-Declaring_a_generic_class.main" target="11" />
       <module name="Watermark.Topics-Introduction_to_generic_programming-Get_and_set.main" target="11" />
+      <module name="Watermark.Topics-Introduction_to_generic_programming-Learning_on_mistakes.main" target="11" />
       <module name="Watermark.Topics-Introduction_to_generic_programming-Specifying_a_generic_class.main" target="11" />
+      <module name="Watermark.Topics-Introduction_to_generic_programming-Stack_Kotlin_Flow.main" target="11" />
+      <module name="Watermark.Topics-Introduction_to_generic_programming-Sweety_coding.main" target="11" />
       <module name="Watermark.Topics-Introduction_to_generic_programming-Theory.main" target="11" />
       <module name="Watermark.Topics-Invoking_functions-Arguments.main" target="11" />
       <module name="Watermark.Topics-Invoking_functions-How_to_invoke_a_function.main" target="11" />
