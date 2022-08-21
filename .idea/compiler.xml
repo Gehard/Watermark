@@ -33,6 +33,16 @@
       <module name="Watermark.Topics-Invoking_functions-Returning_a_result.main" target="11" />
       <module name="Watermark.Topics-Invoking_functions-The_magic_of_println.main" target="11" />
       <module name="Watermark.Topics-Invoking_functions-Theory.main" target="11" />
+      <module name="Watermark.Topics-Map-Creation_of_Map_Entry.main" target="11" />
+      <module name="Watermark.Topics-Map-Is_there_a_key.main" target="11" />
+      <module name="Watermark.Topics-Map-Map_creation.main" target="11" />
+      <module name="Watermark.Topics-Map-Map_has_elements.main" target="11" />
+      <module name="Watermark.Topics-Map-Map_with_buildMap.main" target="11" />
+      <module name="Watermark.Topics-Map-Products_in_store.main" target="11" />
+      <module name="Watermark.Topics-Map-Strings_to_Map.main" target="11" />
+      <module name="Watermark.Topics-Map-Sum_of_values.main" target="11" />
+      <module name="Watermark.Topics-Map-The_truth_is.main" target="11" />
+      <module name="Watermark.Topics-Map-Theory.main" target="11" />
       <module name="Watermark.Topics-Named_arguments-Car_price.main" target="11" />
       <module name="Watermark.Topics-Named_arguments-Car_speed.main" target="11" />
       <module name="Watermark.Topics-Named_arguments-Correct_invocations.main" target="11" />
@@ -72,6 +82,16 @@
       <module name="Watermark.Topics-Secondary_constructor-Frozen_desserts.main" target="11" />
       <module name="Watermark.Topics-Secondary_constructor-Spot_the_error.main" target="11" />
       <module name="Watermark.Topics-Secondary_constructor-Theory.main" target="11" />
+      <module name="Watermark.Topics-String_formatting-Correct_printout.main" target="11" />
+      <module name="Watermark.Topics-String_formatting-Dynamic_Double_formatting.main" target="11" />
+      <module name="Watermark.Topics-String_formatting-Floating_point_numbers_format_string.main" target="11" />
+      <module name="Watermark.Topics-String_formatting-Format_a_table.main" target="11" />
+      <module name="Watermark.Topics-String_formatting-Format_Double_with_a_comma_and_2_decimal_digits.main" target="11" />
+      <module name="Watermark.Topics-String_formatting-Format_String.main" target="11" />
+      <module name="Watermark.Topics-String_formatting-Integer_format_string.main" target="11" />
+      <module name="Watermark.Topics-String_formatting-Octal_and_hexadecimal.main" target="11" />
+      <module name="Watermark.Topics-String_formatting-Theory.main" target="11" />
+      <module name="Watermark.Topics-String_formatting-Valid_format_specifiers.main" target="11" />
       <module name="Watermark.Topics-String_templates-Arithmetic_expression.main" target="11" />
       <module name="Watermark.Topics-String_templates-Date_and_time_formatting.main" target="11" />
       <module name="Watermark.Topics-String_templates-How_to_write_string_templates.main" target="11" />

@@ -54,9 +54,8 @@ val phones = regex.findAll("Ann's phone: 123-345-6789 " +
 for (phone in phones) println(phone.value)</code></pre> 
   <p>This code will print the following:</p> 
   <pre><code class="language-no-highlight">123-345-6789
-1234567777
 (111)-234-5678
-(101)2345000</code></pre> 
+(101)-234-5000</code></pre> 
   <p>Great! The following examples will be more complex and universal.</p> 
   <h5 id="email" style="text-align: center;">Email</h5> 
   <p>Let's imagine that you need to find all the email addresses that appear in a text. The rules for composing emails are regulated by <a href="https://datatracker.ietf.org/doc/html/rfc5322" rel="noopener noreferrer nofollow" target="_blank">RFC 5322</a>. A standard email address looks like "login@subdomain.domain". The following regular expression will match most of the email addresses compiled according to these rules:</p> 

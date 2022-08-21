@@ -1,0 +1,1 @@
+fun printOctAndHex(value: Int) = print("%#o %#x".format(value, value))

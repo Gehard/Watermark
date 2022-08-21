@@ -9,3 +9,5 @@ content:
 - Secondary constructor
 - Invoking functions
 - Introduction to generic programming
+- Map
+- String formatting
